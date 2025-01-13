@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -12,44 +13,38 @@ class Blog
     public $slug;
     public $intro;
     public $body;
+    public $date;
 
-    public function __construct($title, $slug, $intro, $body)
+    public function __construct($title, $slug, $intro, $body, $date)
     {
         $this->title = $title;
         $this->slug = $slug;
         $this->intro = $intro;
         $this->body = $body;
+        $this->date = $date;
     }
 
     public static function all()
     {
-        $files = File::files(resource_path("blogs"));
-
-        $blogs = array_map(function($gg){
-            $file = YamlFrontMatter::parse(file_get_contents($gg));
-            return $blog = new Blog($file->title, $file-> slug, $file->intro, $file->body());
-        },$files);
-
-        return $blogs;
-
-//        $allBlogs = array_map(function ($file){
-//            return $file->getContents();
-//        }, $files);
-//        return $allBlogs;
-//        dd($files);
+        return collect(File::files(resource_path("blogs")))
+            ->map(function ($file){
+            $file = YamlFrontMatter::parse(file_get_contents($file));
+            return new Blog($file->title, $file-> slug, $file->intro, $file->body(), $file->date);
+        })->sortByDesc('date');
     }
 
     public static function find($slug)
     {
-        $path = resource_path("/blogs/$slug.html");
-        if (!file_exists($path)){
-            return redirect('/');
+        $blogs = static::all();
+        return $blogs->firstWhere('slug', $slug);
+    }
+
+    public static function findOrFail($slug)
+    {
+        $blog = static::find($slug);
+        if (!$blog){
+            throw new ModelNotFoundException();
         }
-
-        $blog = cache()->remember("posts.$slug", now()->addMinute(2), function () use ($path){
-            return file_get_contents($path);
-        });
-
         return $blog;
     }
 }
