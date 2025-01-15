@@ -21,10 +21,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/blog/{blog}', function ($slug){
-
-    $blog = Blog::findOrFail($slug);
-
+Route::get('/blog/{blog}', function (Blog $blog){
     return view('blog',[
         'blog' => $blog
     ]);
