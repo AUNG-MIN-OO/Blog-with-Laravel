@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $blogs = Blog::all();
-    return view('blogs',[
+    return view('blogs', [
         'blogs' => $blogs
     ]);
 });
 
-Route::get('/blog/{blog}', function (Blog $blog){
-    return view('blog',[
+Route::get('/blog/{blog:slug}', function (Blog $blog) {
+    return view('blog', [
         'blog' => $blog
     ]);
-})->where('blog','[A-z\d\-_]+');
+})->where('blog', '[A-z\d\-_]+');
