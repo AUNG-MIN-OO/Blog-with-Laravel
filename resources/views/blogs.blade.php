@@ -3,11 +3,14 @@
         My Blogs
     </x-slot>
     @foreach($blogs as $blog)
-        <a href="blog/<?= $blog->slug ?>"> {{$blog->title}} </a>
+        <a href="blog/{{$blog->slug}}"> {{$blog->title}} </a>
         <div>
-            <p>{{$blog->category->category_name}}</p>
+            <a href="category/{{$blog->category->slug}}">{{$blog->category->category_name}}</a>
             <p>Published at => {{$blog->created_at->diffForHumans()}}</p>
             <p>{{$blog->intro}}</p>
+            <a href="user/{{$blog->user->username}}">
+                <h4>Author - {{$blog->user->name}}</h4>
+            </a>
         </div>
     @endforeach
 </x-layout>

@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Blog;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $blogs = Blog::all();
     return view('blogs', [
-        'blogs' => $blogs
+        'blogs' => Blog::latest()->get()
     ]);
 });
 
@@ -26,3 +27,15 @@ Route::get('/blog/{blog:slug}', function (Blog $blog) {
         'blog' => $blog
     ]);
 })->where('blog', '[A-z\d\-_]+');
+
+Route::get('/category/{category:slug}', function (Category $category) {
+    return view('blogs', [
+        'blogs' => $category->blogs
+    ]);
+});
+
+Route::get('/user/{user:username}', function (User $user) {
+    return view('blogs', [
+        'blogs' => $user->blogs
+    ]);
+});
