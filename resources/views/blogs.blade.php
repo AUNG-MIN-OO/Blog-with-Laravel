@@ -4,7 +4,7 @@
     <x-hero></x-hero>
 
     <!-- blogs section -->
-    <x-blog_section></x-blog_section>
+    <x-blog_section :blogs="$blogs"/>
 
     <!-- subscribe new blogs -->
     <x-subscribe></x-subscribe>

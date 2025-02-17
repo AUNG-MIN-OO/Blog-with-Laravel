@@ -26,23 +26,8 @@
         </div>
     </form>
     <div class="row">
-        <div class="col-md-4 mb-4">
-            <x-blog_card></x-blog_card>
-        </div>
-        <div class="col-md-4 mb-4">
-            <x-blog_card></x-blog_card>
-        </div>
-        <div class="col-md-4 mb-4">
-            <x-blog_card></x-blog_card>
-        </div>
-        <div class="col-md-4 mb-4">
-            <x-blog_card></x-blog_card>
-        </div>
-        <div class="col-md-4 mb-4">
-            <x-blog_card></x-blog_card>
-        </div>
-        <div class="col-md-4 mb-4">
-            <x-blog_card></x-blog_card>
-        </div>
+        @foreach($blogs as $blog)
+            <x-blog_card :blog="$blog"></x-blog_card>
+        @endforeach
     </div>
 </section>
