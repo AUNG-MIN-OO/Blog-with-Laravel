@@ -8,20 +8,21 @@
                     class="card-img-top"
                     alt="..."
                 />
-                <div class="badge bg-danger mb-3">
-                    {{$blog->category->category_name}}
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="badge bg-danger">
+                        <a href="/category/{{$blog->category->slug}}" class="text-decoration-none text-white">{{$blog->category->category_name}}</a>
+                    </div>
+                    <div class="text-muted small">
+                        <strong>Written by:</strong>
+                        <a href="/user/{{$blog->user->username}}" class="text-decoration-none fw-bold text-dark">{{$blog->user->name}}</a>
+                        <span class="mx-2">|</span>
+                        <strong>Uploaded:</strong> {{$blog->created_at->diffForHumans()}}
+                    </div>
                 </div>
                 <h3 class="my-3">{{$blog->title}}</h3>
                 <p class="lh-md">
                     {{$blog->body}}
                 </p>
-                <div class="mb-4">
-                    <p class="text-muted small">
-                        <strong>Written by:</strong> {{$blog->user->name}}
-                        <span class="mx-2">|</span>
-                        <strong>Uploaded:</strong> {{$blog->created_at->diffForHumans()}}
-                    </p>
-                </div>
             </div>
         </div>
     </div>

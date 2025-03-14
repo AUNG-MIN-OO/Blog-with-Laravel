@@ -1,12 +1,27 @@
 <section class="container text-center" id="blogs">
     <h1 class="display-5 fw-bold mb-4">Blogs</h1>
     <div class="">
-        <select name="" id="" class="p-1 rounded-pill">
-            <option value="">Filter by Category</option>
-        </select>
-        <select name="" id="" class="p-1 rounded-pill mx-3">
-            <option value="">Filter by Tag</option>
-        </select>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-dark rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                {{isset($currentCategory) ? $currentCategory->category_name : "Filter by Category"}}
+            </button>
+            <ul class="dropdown-menu">
+                @foreach($categories as $category)
+                    <li><a class="dropdown-item" href="/category/{{$category->slug}}">{{$category->category_name}}</a></li>
+                @endforeach
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-dark rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter by Tag
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+            </ul>
+        </div>
+
     </div>
     <form action="" class="my-3">
         <div class="input-group mb-3">
