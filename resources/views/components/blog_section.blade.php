@@ -23,9 +23,11 @@
         </div>
 
     </div>
-    <form action="" class="my-3">
+    <form action="" class="my-3" method="get">
         <div class="input-group mb-3">
             <input
+                name="search"
+                value="{{request('search')}}"
                 type="text"
                 autocomplete="false"
                 class="form-control"
@@ -41,8 +43,10 @@
         </div>
     </form>
     <div class="row">
-        @foreach($blogs as $blog)
+        @forelse($blogs as $blog)
             <x-blog_card :blog="$blog"></x-blog_card>
-        @endforeach
+        @empty
+            <h1 class="text-danger">No Results!</h1>
+        @endforelse
     </div>
 </section>

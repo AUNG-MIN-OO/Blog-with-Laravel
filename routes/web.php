@@ -17,8 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $blogs = Blog::latest();
+
+    if (request('search')) {
+        $blogs = $blogs->where('title', 'like', '%' . request('search') . '%');
+    }
+
     return view('blogs', [
-        'blogs' => Blog::latest()->get(),
+        'blogs' => $blogs->get(),
         'categories' => Category::all()
     ]);
 });
