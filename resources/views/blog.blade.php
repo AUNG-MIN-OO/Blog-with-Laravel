@@ -10,7 +10,7 @@
                 />
                 <div class="d-flex justify-content-between mb-3">
                     <div class="badge bg-danger">
-                        <a href="/category/{{$blog->category->slug}}" class="text-decoration-none text-white">{{$blog->category->category_name}}</a>
+                        <a href="?category={{$blog->category->slug}}" class="text-decoration-none text-white">{{$blog->category->category_name}}</a>
                     </div>
                     <div class="text-muted small">
                         <strong>Written by:</strong>

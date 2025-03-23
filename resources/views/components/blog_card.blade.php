@@ -15,7 +15,7 @@
                 <span>{{$blog->created_at->diffForHumans()}}</span>
             </p>
             <div class="tags my-3">
-                <a href="/category/{{$blog->category->slug}}">
+                <a href="/?category={{$blog->category->slug}}">
                     <span class="badge bg-danger">{{$blog->category->category_name}}</span>
                 </a>
             </div>

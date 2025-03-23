@@ -1,17 +1,7 @@
 <section class="container text-center" id="blogs">
     <h1 class="display-5 fw-bold mb-4">Blogs</h1>
     <div class="">
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-dark rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{isset($currentCategory) ? $currentCategory->category_name : "Filter by Category"}}
-            </button>
-            <ul class="dropdown-menu">
-                @foreach($categories as $category)
-                    <li><a class="dropdown-item" href="/category/{{$category->slug}}">{{$category->category_name}}</a></li>
-                @endforeach
-            </ul>
-        </div>
+        <x-category-dropdown/>
 
         <div class="btn-group">
             <button type="button" class="btn btn-outline-dark rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

@@ -19,25 +19,12 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
         Blog::truncate();
 
-        $user = User::factory(2)->create();
+        $david = User::factory()->create(['name' => 'david michale', 'email' => 'david@gmail.com','username' => 'david']);
+        $andrew = User::factory()->create(['name' => 'andrew william', 'email' => 'andrew@gmail.com','username' => 'andrew']);
+        $frontend = Category::factory()->create(['category_name' => 'frontend','slug' => 'frontend']);
+        $backend = Category::factory()->create(['category_name' => 'backend','slug' => 'backend']);
 
-        $frontendCategory = Category::factory()->create([
-            'category_name' => 'frontend',
-        ]);
-
-        $backendCategory = Category::factory()->create([
-            'category_name'=>'backend',
-        ]);
-
-        Blog::factory(4)->create([
-            'category_id' => $frontendCategory->id,
-            'user_id' => $user->random()->id
-        ]);
-
-        Blog::factory(6)->create([
-            'category_id' => $backendCategory->id,
-            'user_id' => $user->random()->id
-        ]);
-
+        Blog::factory(5)->create(['user_id' => $david->id, 'category_id' => $frontend->id]);
+        Blog::factory(5)->create(['user_id' => $andrew->id, 'category_id' => $backend->id]);
     }
 }

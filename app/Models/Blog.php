@@ -21,6 +21,18 @@ class Blog extends Model
                     ->orWhere('body', 'like', '%' . $search . '%');
             });
         });
+
+        $query->when($filter['category']??false, function ($query, $category_slug ) {
+            $query->whereHas('category', function ($query) use ($category_slug) {
+                $query->where('slug', $category_slug);
+            });
+        });
+
+        $query->when($filter['user']??false, function ($query, $username) {
+            $query->whereHas('user',function ($query) use ($username){
+                $query->where('username', 'like', '%' . $username . '%');
+            });
+        });
     }
 
     public function category()
