@@ -45,4 +45,5 @@
             <h1 class="text-danger">No Results!</h1>
         @endforelse
     </div>
+    {{$blogs->links()}}
 </section>
