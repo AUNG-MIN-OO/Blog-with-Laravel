@@ -14,7 +14,7 @@
                     </div>
                     <div class="text-muted small">
                         <strong>Written by:</strong>
-                        <a href="/user/{{$blog->user->username}}" class="text-decoration-none fw-bold text-dark">{{$blog->user->name}}</a>
+                        <a href="/?user={{$blog->user->username}}" class="text-decoration-none fw-bold text-dark">{{$blog->user->name}}</a>
                         <span class="mx-2">|</span>
                         <strong>Uploaded:</strong> {{$blog->created_at->diffForHumans()}}
                     </div>

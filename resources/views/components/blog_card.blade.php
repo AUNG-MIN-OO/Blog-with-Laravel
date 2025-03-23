@@ -9,7 +9,7 @@
             <h3 class="card-title">{{$blog->title}}</h3>
             <p class="fs-6 text-secondary">
                 uploaded by
-                <a href="/user/{{$blog->user->username}}" class="text-decoration-none fw-bold text-dark">
+                <a href="/?user={{$blog->user->username}}" class="text-decoration-none fw-bold text-dark">
                     <span class="fw-bold">{{$blog->user->name}}</span>
                 </a>
                 <span>{{$blog->created_at->diffForHumans()}}</span>
