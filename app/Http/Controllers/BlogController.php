@@ -10,7 +10,7 @@ class BlogController extends Controller
 {
     public function index(){
         return view('blogs', [
-            'blogs' => $this->getBlogs(),
+            'blogs' => Blog::latest()->filter(request(['search']))->get(),
             'categories' => Category::all()
         ]);
     }
@@ -20,17 +20,5 @@ class BlogController extends Controller
             'blog' => $blog,
             'randomBlogs' => Blog::inRandomOrder()->limit(3)->get()
         ]);
-    }
-
-    protected function getBlogs()
-    {
-        $blogs = Blog::latest();
-
-        if (request('search')) {
-            $blogs = $blogs->where('title', 'like', '%' . request('search') . '%')
-                ->orWhere('body', 'like', '%' . request('search') . '%');
-        }
-
-        return $blogs->get();
     }
 }
