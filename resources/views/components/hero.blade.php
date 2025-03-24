@@ -1,5 +1,5 @@
 <!-- hero section -->
-<section class="px-4 py-5 my-5 text-center">
+<section class="px-4 py-2 my-5 text-center">
     <img class="d-block mx-auto mb-4" src="{{asset("images/logo.png")}}" alt="" width="250" />
     <h1 class="display-5 fw-bold">Creative Coder Myanmar</h1>
     <div class="col-lg-6 mx-auto">

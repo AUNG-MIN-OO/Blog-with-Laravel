@@ -1,5 +1,7 @@
 <x-layout>
 
+    <x-alert></x-alert>
+
     {{--    hero section  --}}
     <x-hero></x-hero>
 
