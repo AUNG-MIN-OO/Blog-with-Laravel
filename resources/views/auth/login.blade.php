@@ -1,3 +1,5 @@
+<x-alert></x-alert>
+
 <x-layout>
     <x-slot name="title">Login | My Blog</x-slot>
     <div class="container">
