@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
     public function create(){
-        return view('auth.create');
+        return view('auth.register');
     }
 
     public function store(){
@@ -20,10 +21,34 @@ class AuthController extends Controller
             'password' => ['required', 'string', 'min:8'],
         ]);
 
-        User::create($formData);
+        $user = User::create($formData);
 
-        session()->flash('registerSuccess', 'Welcome dear <b>' . $formData['name'] . '</b>');
+        //let user log in
+        auth()->login($user);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Welcome dear <b>' . $user->name . '</b>');
+    }
+
+    public function login(){
+        return view('auth.login');
+    }
+
+    public function postLogin()
+    {
+        $formData = request()->validate([
+            'email' => ['required', 'string', 'email', 'max:255',Rule::exists('users', 'email')],
+            'password' => ['required','min:8', 'max:255'],
+        ],[
+            'email.required' => 'Please enter your email',
+            'password.min' => 'Password must be at least 8 characters.',
+        ]);
+
+
+
+    }
+
+    public function logout(){
+        auth()->logout();
+        return redirect('/')->with('success', 'You have been logged out');
     }
 }

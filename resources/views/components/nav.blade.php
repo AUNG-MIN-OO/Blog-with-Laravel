@@ -16,9 +16,21 @@
                 <li class="nav-item mx-lg-4">
                     <a class="nav-link" href="/#subscribe">Subscribe</a>
                 </li>
-                <li class="nav-item mx-lg-4">
-                    <a class="nav-link" href="/register">Register</a>
-                </li>
+                @auth
+                    <li class="nav-item mx-lg-4">
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link">Log out</button>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item mx-lg-4">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item mx-lg-4">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>

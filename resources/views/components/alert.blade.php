@@ -1,6 +1,6 @@
-@if(session('registerSuccess'))
+@if(session('success'))
     <div id="success-alert" class="alert alert-success alert-dismissible show" role="alert">
-        {{session('registerSuccess')}}
+        {!! session('success') !!}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
