@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <x-comments></x-comments>
+    <x-comments :comments="$blog->comments"></x-comments>
 
     <x-subscribe/>
 
