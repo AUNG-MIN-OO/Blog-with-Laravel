@@ -1,13 +1,11 @@
 <x-layout>
-    <!-- singloe blog section -->
+    <!-- single blog section -->
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mx-auto text-center">
+            <div class="col-md-8 mx-auto text-center">
                 <img
                     src="https://creativecoder.s3.ap-southeast-1.amazonaws.com/blogs/GOLwpsybfhxH0DW8O6tRvpm4jCR6MZvDtGOFgjq0.jpg"
-                    class="card-img-top"
-                    alt="..."
-                />
+                    class="card-img-top" alt="..."/>
                 <div class="d-flex justify-content-between mb-3">
                     <div class="badge bg-danger">
                         <a href="?category={{$blog->category->slug}}" class="text-decoration-none text-white">{{$blog->category->category_name}}</a>
@@ -26,6 +24,8 @@
             </div>
         </div>
     </div>
+
+    <x-comment-form :blog="$blog"></x-comment-form>
 
     <x-comments :comments="$blog->comments"></x-comments>
 
