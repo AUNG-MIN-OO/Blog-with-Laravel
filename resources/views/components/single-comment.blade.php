@@ -1,6 +1,6 @@
 <div class="row mb-2">
     <div class="col-2 col-md-3 text-center">
-        <img class="rounded-circle border-0" src="{{ asset('images/profile_image.jpg') }}" alt="" style="width: 50px;height: 50px"/>
+        <img class="rounded-circle border-0" src="{{ $comment->user->avatar }}" alt="" style="width: 50px;height: 50px"/>
     </div>
     <div class="col-10 col-md-9">
         <div class="d-flex">
