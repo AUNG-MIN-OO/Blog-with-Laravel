@@ -22,4 +22,6 @@ Route::post('/login', [AuthController::class, 'postLogin'])->middleware('guest')
 Route::post('/blogs/{blog:slug}/subscription',[Blogcontroller::class,'subscriptionHandler']);
 
 Route::get('/admin/blog/create', [BlogController::class, 'create'])->middleware('admin');
+Route::post('/admin/blog/store', [BlogController::class, 'store'])->middleware('admin');
+
 

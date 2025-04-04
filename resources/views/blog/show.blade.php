@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-8 mx-auto text-center">
                 <img
-                    src="https://creativecoder.s3.ap-southeast-1.amazonaws.com/blogs/GOLwpsybfhxH0DW8O6tRvpm4jCR6MZvDtGOFgjq0.jpg"
-                    class="card-img-top" alt="..."/>
+                    src='{{asset("/storage/$blog->thumbnail")}}'
+                    class="card-img-top my-3" alt="..."/>
                 <div class="d-flex justify-content-between mb-3">
                     <div class="badge bg-danger">
                         <a href="?category={{$blog->category->slug}}" class="text-decoration-none text-white">{{$blog->category->category_name}}</a>
