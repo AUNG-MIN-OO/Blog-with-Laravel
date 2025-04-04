@@ -34,4 +34,8 @@ class BlogController extends Controller
 
         return redirect()->back();
     }
+
+    public function create(){
+        return view('blog.create');
+    }
 }
